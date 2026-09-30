@@ -1,0 +1,26 @@
+{
+  "name": "sfwe475-lab1-2103060009",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "start": "tsx src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denizsismanyazici/sfwe475-lab1-2103060009.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/denizsismanyazici/sfwe475-lab1-2103060009/issues"
+  },
+  "homepage": "https://github.com/denizsismanyazici/sfwe475-lab1-2103060009#readme",
+  "devDependencies": {
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
