@@ -17,5 +17,5 @@ Body : {
 7. I searched hsk podcast on YT. The difference between them is GET asks server for something, like /todos/1. POST sends data to the server and asks it to do something with it. YouTube sent the thing I searched to the server so it could find videos related to the search.
 8. Its written max-age=43200. Its safe for browser to cache since the data doesnt say no-store and its not private. Pragma says no-cache but Cache-control is the newer header so browser will follow that over no-cache.
 
-STRAND 2 //
+
 
