@@ -16,3 +16,37 @@ export function daysUntilDue(task: Task): number | null {
   const due = new Date(task.dueDate);
   return Math.ceil((due.getTime() - Date.now()) / 86_400_000);
 }
+
+// flips done for the task with this id, makes a new list
+export function toggleTask(tasks: Task[], id: number): Task[] {
+  const newTasks: Task[] = [];
+  for (const t of tasks) {
+    if (t.id === id) {
+      newTasks.push({ id: t.id, title: t.title, done: !t.done, dueDate: t.dueDate });
+    } else {
+      newTasks.push(t);
+    }
+  }
+  return newTasks;
+}
+
+export type TaskFilter = "all" | "done" | "open";
+
+// gives back only the tasks that match the filter
+export function filterTasks(tasks: Task[], filter: TaskFilter): Task[] {
+  if (filter === "all") {
+    return tasks;
+  }
+  const result: Task[] = [];
+  for (const t of tasks) {
+    if (filter === "done" && t.done === true) {
+      result.push(t);
+    }
+    if (filter === "open" && t.done === false) {
+      result.push(t);
+    }
+  }
+  return result;
+}
+
+
