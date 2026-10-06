@@ -1,3 +1,4 @@
+import { fetchTodo } from "./api";
 import { addTask, findTask, type Task } from "./tasks";
 
 let tasks: Task[] = [];
@@ -15,3 +16,10 @@ function printTask(id: number): void {
 
 printTask(1);
 printTask(99);
+
+async function main() {
+  const todo = await fetchTodo(1);
+  console.log(todo);
+}
+
+main();
