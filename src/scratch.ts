@@ -21,3 +21,14 @@ import { CreateTaskSchema } from "./schemas";
 
 console.log(CreateTaskSchema.safeParse({ title: "Buy milk" }).success);
 console.log(CreateTaskSchema.safeParse({ title: "" }).success);
+
+import { createTasks } from "./createTask";
+
+console.log(JSON.stringify(createTasks([
+  { title: "Buy milk" },
+  { title: "" },
+  { dueDate: "2026-10-10" },
+  { title: "Study Zod", dueDate: "2026-10-12" },
+]), null, 2));
+
+console.log(createTasks("not a list"));

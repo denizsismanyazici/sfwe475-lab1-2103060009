@@ -24,3 +24,5 @@ export const TodoSchema = z.object({
 });
 
 export type Todo = z.infer<typeof TodoSchema>;
+
+export const TaskListSchema = z.array(TaskSchema);
