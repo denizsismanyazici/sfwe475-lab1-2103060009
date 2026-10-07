@@ -1,4 +1,4 @@
-export type Todo = { userId: number; id: number; title: string; completed: boolean };
+import { TodoSchema, type Todo } from "./schemas";
 
 export async function fetchTodo(id: number): Promise<Todo | null> {
   const controller = new AbortController();
@@ -15,8 +15,15 @@ export async function fetchTodo(id: number): Promise<Todo | null> {
       return null;
     }
 
-    const data = await response.json();
-    return data;
+    const data: unknown = await response.json();
+    const parsed = TodoSchema.safeParse(data);
+
+    if (!parsed.success) {
+      console.error(`Bad data for todo ${id}:`, parsed.error.issues);
+      return null;
+    }
+
+    return parsed.data;
   } catch (error) {
     console.error(`Request failed or timed out for todo ${id}:`, error);
     return null;

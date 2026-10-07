@@ -46,3 +46,7 @@ Path title expects a string but got undefined, because title is missing.
     ]
 
 Done is a text ("yes") not a boolean.
+
+## 7. Why is unknown the honest type?
+
+payload is unknown because its not checked yet. typescript dont let us use it until safeParse checks it. if we use Task we say its correct without checking, same mistake as strand 2.

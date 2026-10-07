@@ -1,3 +1,4 @@
+import { createTask } from "./createTask";
 import { fetchTodo, fetchTodos, fetchTodosOneByOne } from "./api";
 import { addTask, findTask } from "./tasks";
 import type { Task } from "./schemas";
@@ -34,3 +35,16 @@ async function main() {
 }
 
 main();
+
+function printCreateResult(payload: unknown): void {
+  const result = createTask(payload);
+  if (result.ok) {
+    console.log("Created task:", result.task);
+  } else {
+    console.log("Could not create task:", result.error.fieldErrors);
+  }
+}
+
+printCreateResult({ title: "Buy milk", dueDate: "2026-10-10" });
+printCreateResult({ dueDate: "2026-10-10" });
+printCreateResult({ title: 123 });
