@@ -16,3 +16,8 @@ for (const candidate of [emptyTitle, negativeId]) {
   const result = TaskSchema.safeParse(candidate);
   console.log(result.success, result.success ? "" : result.error.issues);
 }
+
+import { CreateTaskSchema } from "./schemas";
+
+console.log(CreateTaskSchema.safeParse({ title: "Buy milk" }).success);
+console.log(CreateTaskSchema.safeParse({ title: "" }).success);

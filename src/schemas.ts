@@ -8,3 +8,10 @@ export const TaskSchema = z.object({
 });
 
 export type Task = z.infer<typeof TaskSchema>;
+
+export const CreateTaskSchema = TaskSchema.omit({
+  id: true,
+  done: true,
+});
+
+export type CreateTaskInput = z.infer<typeof CreateTaskSchema>;
