@@ -1,0 +1,52 @@
+# Lab 2 Notes
+
+## 1. What can the program do while `await fetch(...)` is waiting?
+
+after we send a fetch() the program is not frozen since await only pauses the one function it's inside. So there could be other requests, other code can keep going or button clicks etc. in the web app works. (everything else basically)
+
+## 2. Why is the parallel version faster?
+One by one waits for each request before starting the next. Parallel starts the requests right away, without waiting. The waits overlap, so the total waiting time is the wait that is the longest.
+
+## 3. Why does a real app need a timeout?
+
+Servers are mostly fast, but sometimes the server is overloaded or the user has a bad wifi connection. If we don't have a timeout, the fetch could wait forever, so the app would look frozen. With a timeout, if the server doesn't respond, the user can try again.
+
+## 4. Why did TypeScript stay silent?
+
+We said fetchTodo returns a Task, but the server sends completed, not done. TypeScript didn't complain because it only checks the code before it runs, it can't see the real data. We only saw the problem at runtime when done printed undefined.
+
+## 5. Another boundary in my project
+
+In process.argv we have an array of strings, and process.argv[2] is what the user types in the terminal. It comes from outside the program so TypeScript can't check it. The user could type anything that would break the program, like abc instead of a number.
+
+## 6. Zod error messages
+
+1/
+
+    [
+      {
+        expected: 'string',
+        code: 'invalid_type',
+        path: [ 'title' ],
+        message: 'Invalid input: expected string, received undefined'
+      }
+    ]
+
+Path title expects a string but got undefined, because title is missing.
+
+2/
+
+    [
+      {
+        expected: 'boolean',
+        code: 'invalid_type',
+        path: [ 'done' ],
+        message: 'Invalid input: expected boolean, received string'
+      }
+    ]
+
+Done is a text ("yes") not a boolean.
+
+## 7. Why is unknown the honest type?
+
+payload is unknown because its not checked yet. typescript dont let us use it until safeParse checks it. if we use Task we say its correct without checking, same mistake as strand 2.
