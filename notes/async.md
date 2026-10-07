@@ -14,3 +14,7 @@ Servers are mostly fast, but sometimes the server is overloaded or the user has 
 ## 4. Why did TypeScript stay silent?
 
 We said fetchTodo returns a Task, but the server sends completed, not done. TypeScript didn't complain because it only checks the code before it runs, it can't see the real data. We only saw the problem at runtime when done printed undefined.
+
+## 5. Another boundary in my project
+
+In process.argv we have an array of strings, and process.argv[2] is what the user types in the terminal. It comes from outside the program so TypeScript can't check it. The user could type anything that would break the program, like abc instead of a number.
