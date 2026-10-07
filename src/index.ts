@@ -19,7 +19,7 @@ printTask(99);
 
 async function main() {
   const todo = await fetchTodo(1);
-  console.log(todo);
+  console.log(todo?.done);
 
   const ids = [1, 2, 3, 4, 5];
 

@@ -10,3 +10,7 @@ One by one waits for each request before starting the next. Parallel starts the 
 ## 3. Why does a real app need a timeout?
 
 Servers are mostly fast, but sometimes the server is overloaded or the user has a bad wifi connection. If we don't have a timeout, the fetch could wait forever, so the app would look frozen. With a timeout, if the server doesn't respond, the user can try again.
+
+## 4. Why did TypeScript stay silent?
+
+We said fetchTodo returns a Task, but the server sends completed, not done. TypeScript didn't complain because it only checks the code before it runs, it can't see the real data. We only saw the problem at runtime when done printed undefined.
