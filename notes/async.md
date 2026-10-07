@@ -18,3 +18,31 @@ We said fetchTodo returns a Task, but the server sends completed, not done. Type
 ## 5. Another boundary in my project
 
 In process.argv we have an array of strings, and process.argv[2] is what the user types in the terminal. It comes from outside the program so TypeScript can't check it. The user could type anything that would break the program, like abc instead of a number.
+
+## 6. Zod error messages
+
+1/
+
+    [
+      {
+        expected: 'string',
+        code: 'invalid_type',
+        path: [ 'title' ],
+        message: 'Invalid input: expected string, received undefined'
+      }
+    ]
+
+Path title expects a string but got undefined, because title is missing.
+
+2/
+
+    [
+      {
+        expected: 'boolean',
+        code: 'invalid_type',
+        path: [ 'done' ],
+        message: 'Invalid input: expected boolean, received string'
+      }
+    ]
+
+Done is a text ("yes") not a boolean.
