@@ -1,5 +1,6 @@
 import { fetchTodo, fetchTodos, fetchTodosOneByOne } from "./api";
-import { addTask, findTask, type Task } from "./tasks";
+import { addTask, findTask } from "./tasks";
+import type { Task } from "./schemas";
 
 let tasks: Task[] = [];
 tasks = addTask(tasks, "Read Chapter 1");
