@@ -1,6 +1,6 @@
-import type { Task } from "./tasks";
+export type Todo = { userId: number; id: number; title: string; completed: boolean };
 
-export async function fetchTodo(id: number): Promise<Task | null> {
+export async function fetchTodo(id: number): Promise<Todo | null> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 3000);
 
