@@ -8,3 +8,11 @@ for (const candidate of [valid, missingField, wrongType]) {
   const result = TaskSchema.safeParse(candidate);
   console.log(result.success, result.success ? "" : result.error.issues);
 }
+
+const emptyTitle = { id: 4, title: "", done: false };
+const negativeId = { id: -1, title: "Run", done: false };
+
+for (const candidate of [emptyTitle, negativeId]) {
+  const result = TaskSchema.safeParse(candidate);
+  console.log(result.success, result.success ? "" : result.error.issues);
+}
