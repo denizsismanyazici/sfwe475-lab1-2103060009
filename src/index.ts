@@ -1,4 +1,4 @@
-import { fetchTodo } from "./api";
+import { fetchTodo, fetchTodos, fetchTodosOneByOne } from "./api";
 import { addTask, findTask, type Task } from "./tasks";
 
 let tasks: Task[] = [];
@@ -20,6 +20,16 @@ printTask(99);
 async function main() {
   const todo = await fetchTodo(1);
   console.log(todo);
+
+  const ids = [1, 2, 3, 4, 5];
+
+  console.time("one by one");
+  await fetchTodosOneByOne(ids);
+  console.timeEnd("one by one");
+
+  console.time("parallel");
+  await fetchTodos(ids);
+  console.timeEnd("parallel");
 }
 
 main();

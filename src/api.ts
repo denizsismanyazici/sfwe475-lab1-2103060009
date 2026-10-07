@@ -18,3 +18,15 @@ export async function fetchTodo(id: number) {
     return null;
   }
 }
+
+export async function fetchTodosOneByOne(ids: number[]) {
+  const results = [];
+  for (const id of ids) {
+    results.push(await fetchTodo(id));
+  }
+  return results;
+}
+
+export async function fetchTodos(ids: number[]) {
+  return Promise.all(ids.map((id) => fetchTodo(id)));
+}
